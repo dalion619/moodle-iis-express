@@ -1,0 +1,149 @@
+{
+    "folders": [ 
+		{
+            "name": "moodle",
+            "path": "..\\moodle"
+        },
+        {
+            "name": "moodledata",
+            "path": "..\\moodledata"
+        },
+        {
+            "name": "php-8.2.9",
+            "path": "..\\php-8.2.9"
+        },
+        {
+            "name": "",
+            "path": "."
+        }
+    ],
+    "launch": {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "type": "clr",
+                "name": ".NET Attach",
+                "request": "attach",
+                "preLaunchTask": "iis-express",
+                "processName": "iisexpress.exe",
+            }
+        ]
+    },
+    "tasks": {
+        "version": "2.0.0",
+        "tasks": [ 
+            {
+                "label": "iis-express",
+                "type": "shell",
+                "command": "\"C:\\Program Files\\IIS Express\\iisexpress.exe\"",
+                "args": [
+                    "/config:..\\.vscode\\iis-express\\applicationhost.config",
+                    "/site:${input:site-location}",
+                    "/apppool:Clr4IntegratedAppPool"
+                ],
+                "isBackground": true,
+                "dependsOrder": "sequence",
+                "dependsOn": [],
+                // This task is run before some debug tasks.
+                // Problem is, it's a watch script, and since it never exits, VSCode
+                // complains. All this is needed so VSCode just lets it run.
+                "problemMatcher": [
+                    {
+                        "pattern": [
+                            {
+                                "regexp": ".",
+                                "file": 1,
+                                "location": 2,
+                                "message": 3
+                            }
+                        ],
+                        "background": {
+                            "activeOnStart": true,
+                            "beginsPattern": ".",
+                            "endsPattern": "."
+                        }
+                    }
+                ]
+            } 
+        ],
+        "inputs": [
+            {
+              "type": "pickString",
+              "id": "site-location",
+              "description": "Site location",
+              "options": [
+                "Moodle"
+              ],
+              "default": "Moodle"
+            } 
+          ]
+    },
+    "settings": {
+        "remote.extensionKind": {
+            "vscode.git": [
+                "workspace"
+            ],
+            "vscode.git-base": [
+                "workspace"
+            ],
+            "vscode.github": [
+                "workspace"
+            ],
+            "vscode.github-authentication": [
+                "workspace"
+            ],
+            "GitHub.vscode-pull-request-github": [
+                "workspace"
+            ],
+            "ms-vscode.remote-repositories": [
+                "workspace"
+            ],
+            "vscode.emmet": [
+                "workspace"
+            ],
+            "vscode.debug-auto-launch": [
+                "workspace"
+            ],
+            "vscode.merge-conflict": [
+                "workspace"
+            ],
+            "vscode.configuration-editing": [
+                "workspace"
+            ],
+            "vscode.typescript-language-features": [
+                "workspace"
+            ],
+            "vscode.json-language-features": [
+                "workspace"
+            ],
+            "vscode.microsoft-authentication": [
+                "workspace"
+            ],
+            "vscode.npm": [
+                "workspace"
+            ],
+            "vscode.extension-editing": [
+                "workspace"
+            ],
+            "ms-vscode.anycode": [
+                "workspace"
+            ],
+            "ms-vscode-remote.remote-wsl-recommender": [
+                "workspace"
+            ],
+            "bierner.color-info": [
+                "workspace"
+            ]
+        },
+        "omnisharp.useModernNet": false,
+        "workbench.editor.highlightModifiedTabs": true,
+        "editor.fontFamily": "'Jetbrains Mono SemiMedium', Consolas, 'Courier New', monospace",
+        "omnisharp.path": "",
+        "razor.disabled": true,
+        "omnisharp.projectLoadTimeout": 600,
+        "omnisharp.sdkIncludePrereleases": false,
+        "workbench.experimental.editSessions.enabled": true,
+        "workbench.list.smoothScrolling": true,
+        "editor.wordWrap": "on",
+    },
+}
